@@ -1,4 +1,7 @@
+file(GLOB_RECURSE CURRENT_HEADER_FILES *.h *.hpp)
+file(GLOB_RECURSE CURRENT_SOURCE_FILES *.cpp)
+source_group("Header Files" FILES ${CURRENT_HEADER_FILES})
 add_library(Common
-BaseApplication.cpp
-main.cpp
+${CURRENT_SOURCE_FILES}
+${CURRENT_HEADER_FILES}
 )
