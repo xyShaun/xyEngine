@@ -4,7 +4,7 @@ namespace xy
 {
 	int BaseApplication::Initialize()
 	{
-		m_bExit = false;
+		m_bIsExit = false;
 
 		return 0;
 	}
@@ -21,6 +21,6 @@ namespace xy
 
 	bool BaseApplication::IsExit()
 	{
-		return m_bExit;
+		return m_bIsExit;
 	}
 }

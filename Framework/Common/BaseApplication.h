@@ -15,6 +15,6 @@ namespace xy
 		virtual bool IsExit();
 
 	protected:
-		bool m_bExit;
+		bool m_bIsExit;
 	};
 }
