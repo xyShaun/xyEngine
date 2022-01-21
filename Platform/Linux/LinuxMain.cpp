@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include <stdio.h>
+#include <string.h>
 
 #include <xcb/xcb.h>
 
@@ -59,7 +60,7 @@ int main()
 										 mask, values);												 /* masks */
 
 	/* set the title of the window */
-	xcb_change_property(pConn, XCB_PROP_MODE_REPLACE, window,
+	xcb_change_property(pConnection, XCB_PROP_MODE_REPLACE, window,
 		XCB_ATOM_WM_NAME, XCB_ATOM_STRING, 8,
 		strlen(szWndCaption), szWndCaption);
 
@@ -68,7 +69,7 @@ int main()
 
 	xcb_flush(pConnection);
 
-	while ((pEvent = xcb_wait_for_event(pConn)) && !bIsExit)
+	while ((pEvent = xcb_wait_for_event(pConnection)) && !bIsExit)
 	{
 		switch (pEvent->response_type & ~0x80)
 		{
