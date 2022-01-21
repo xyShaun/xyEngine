@@ -17,6 +17,7 @@ int main()
 	bool bIsExit = false;
 
 	const char* szWndCaption = "Hello, xyEngine!";
+	const char* szWndIconCaption = "Hello, xyEngine! (iconified)";
 	int nClientWidth = 800;
 	int nClientHeight = 600;
 
@@ -63,6 +64,11 @@ int main()
 	xcb_change_property(pConnection, XCB_PROP_MODE_REPLACE, window,
 		XCB_ATOM_WM_NAME, XCB_ATOM_STRING, 8,
 		strlen(szWndCaption), szWndCaption);
+
+	/* set the title of the window icon */
+	xcb_change_property(pConnection, XCB_PROP_MODE_REPLACE, window,
+		XCB_ATOM_WM_ICON_NAME, XCB_ATOM_STRING, 8,
+		strlen(szWndIconCaption), szWndIconCaption);
 
 	/* map the window on the screen */
 	xcb_map_window(pConnection, window);
