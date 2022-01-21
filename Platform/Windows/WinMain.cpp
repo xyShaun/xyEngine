@@ -26,9 +26,8 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 		FillRect(hdc, &rc, brush);
 
 		EndPaint(hwnd, &ps);
-
-		break;
 	}
+		break;
 	case WM_DESTROY:
 	{
 		PostQuitMessage(0);

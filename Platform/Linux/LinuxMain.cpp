@@ -80,6 +80,11 @@ int main()
 		switch (pEvent->response_type & ~0x80)
 		{
 		case XCB_EXPOSE:
+		{
+			xcb_rectangle_t rc = { 30, 30, 60, 60 };
+			xcb_poly_fill_rectangle(pConnection, window, gcForeground, 1, &rc);
+			xcb_flush(pConnection);
+		}
 			break;
 		case XCB_KEY_PRESS:
 			bIsExit = true;
@@ -90,6 +95,8 @@ int main()
 
 		free(pEvent);
 	}
+
+	xcb_disconnect(pConnection);
 
 	return 0;
 }
