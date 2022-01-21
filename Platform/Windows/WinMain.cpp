@@ -16,6 +16,19 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 {
 	switch (msg)
 	{
+	case WM_PAINT:
+	{
+		PAINTSTRUCT ps;
+		HDC hdc = BeginPaint(hwnd, &ps);
+		RECT rc = { 30, 30, 60, 60 };
+		HBRUSH brush = (HBRUSH)GetStockObject(BLACK_BRUSH);
+
+		FillRect(hdc, &rc, brush);
+
+		EndPaint(hwnd, &ps);
+
+		break;
+	}
 	case WM_DESTROY:
 	{
 		PostQuitMessage(0);
