@@ -16,6 +16,10 @@
 #include <GL/glx.h>
 #include <GL/gl.h>
 
+const char* szWndCaption = "Hello, xyEngine!";
+int nClientWidth = 800;
+int nClientHeight = 600;
+
 /*
     Attribs filter the list of FBConfigs returned by glXChooseFBConfig().
     Visual attribs further described in glXGetFBConfigAttrib(3)
@@ -132,7 +136,7 @@ int setup_and_run(Display* display, xcb_connection_t* connection, int default_sc
         window,
         screen->root,
         0, 0,
-        150, 150,
+        nClientWidth, nClientHeight,
         0,
         XCB_WINDOW_CLASS_INPUT_OUTPUT,
         visualID,
@@ -140,6 +144,9 @@ int setup_and_run(Display* display, xcb_connection_t* connection, int default_sc
         valuelist
     );
 
+	xcb_change_property(connection, XCB_PROP_MODE_REPLACE, window,
+		XCB_ATOM_WM_NAME, XCB_ATOM_STRING, 8,
+		strlen(szWndCaption), szWndCaption);
 
     // NOTE: window must be mapped before glXMakeContextCurrent
     xcb_map_window(connection, window);
